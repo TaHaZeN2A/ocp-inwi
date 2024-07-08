@@ -1,4 +1,4 @@
-import { Header } from "./Header";
+import { Header } from "@/components/header";
 import { Footer } from "./footer";
 
 type Props={
