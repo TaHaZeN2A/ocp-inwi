@@ -1,0 +1,27 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1721522291120,
+      "tag": "0000_flaky_sabra",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1721749162843,
+      "tag": "0001_elite_stryfe",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1722033654707,
+      "tag": "0002_fresh_robin_chapel",
+      "breakpoints": true
+    }
+  ]
+}

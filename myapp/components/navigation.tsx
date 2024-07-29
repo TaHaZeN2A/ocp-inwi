@@ -15,19 +15,19 @@ const routes =[
     },
     {
         href: "/a",
-        label: "a",
+        label: "Overview",
     },
     {
         href: "/b",
-        label: "b",
+        label: "Overview",
     },
     {
         href: "/c",
-        label: "c",
+        label: "Overview",
     },
     {
         href: "/d",
-        label: "d",
+        label: "Overview",
     },
 ];
 

@@ -1,0 +1,1 @@
+ALTER TABLE "pcap_file" ADD COLUMN "name" text NOT NULL;

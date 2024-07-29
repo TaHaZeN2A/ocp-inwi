@@ -8,7 +8,9 @@ import {
   UserButton
 } from '@clerk/nextjs'
 import "./globals.css";
-
+import { QueryProvider } from "@/providers/query-provider";
+import { SheetProvider } from "@/providers/sheet-provider";
+import { Toaster } from "@/components/ui/sonner";
 const font = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -24,7 +26,15 @@ export default function RootLayout({
   return (
     <ClerkProvider>
     <html lang="en">
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        
+        <QueryProvider>
+          <SheetProvider />
+          
+        {children}
+        <Toaster />
+        </QueryProvider>
+        </body>
     </html>
     </ClerkProvider>
   );
