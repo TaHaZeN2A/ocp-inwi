@@ -10,7 +10,6 @@ import { PcapForm } from "./pcap-form";
 import { insertPcapSchema } from "@/database/schema";
 import { z } from "zod";
 import { useCreatePcap } from "../api/use-create=pcap";
-import { UploadButton } from "@/lib/uploadthing";
 
 const formSchema = insertPcapSchema.pick({
     name: true,
