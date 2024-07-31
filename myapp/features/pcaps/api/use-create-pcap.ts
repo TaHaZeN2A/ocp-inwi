@@ -10,6 +10,9 @@ export const useCreatePcap = () => {
 
     const mutation = useMutation<ResponseType, Error, RequestType>({
         mutationFn: async (json) =>{
+            if (!json.name || !json.Uploadthing_url) {
+                throw new Error("Name and uploadthingUrl must not be null");
+            }
             const response = await client.api.pcaps.$post({json});
             return await response.json();
         },

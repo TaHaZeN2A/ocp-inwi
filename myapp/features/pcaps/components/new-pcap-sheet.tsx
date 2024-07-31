@@ -9,7 +9,7 @@ import { useNewPcap } from "../hooks/use-new-pcap";
 import { PcapForm } from "./pcap-form";
 import { insertPcapSchema } from "@/database/schema";
 import { z } from "zod";
-import { useCreatePcap } from "../api/use-create=pcap";
+import { useCreatePcap } from "../api/use-create-pcap";
 
 const formSchema = insertPcapSchema.pick({
     name: true,
