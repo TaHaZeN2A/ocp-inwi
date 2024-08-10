@@ -6,7 +6,7 @@ export default function Page() {
   <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2">
     <div className="h-full lg:flex flex-col items-center justify-center pt-4">  
         <div className="text-center space-y-4 pt-16">
-        <h1>Welcome Back</h1>
+        <h1></h1>
         </div>
         <ClerkLoaded>
         <SignIn path="/sign-in"/>
@@ -16,7 +16,7 @@ export default function Page() {
         </ClerkLoading>
     </div>
     <div className="h-full bg-blue-200 hidden lg:flex items-center justify-center">
-        <h1>asdsad</h1>
+        <h1>Logo ....</h1>
     </div>
   </div>
   );

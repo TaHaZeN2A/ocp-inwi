@@ -1,0 +1,1 @@
+ALTER TABLE "pcap_file" ALTER COLUMN "createdAt" SET DATA TYPE timestamp (0);

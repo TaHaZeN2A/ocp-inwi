@@ -11,7 +11,7 @@ export const pcap_file = pgTable("pcap_file", {
 id: serial("id").primaryKey(),
 name: text("name").notNull(),
 Uploadthing_url: text("Uploadthing_url").notNull(),
-createdAt : timestamp("createdAt").notNull().defaultNow(),
+createdAt : timestamp("createdAt", { precision: 0}).notNull().defaultNow( ),
 userId: text("userId").notNull(),
 });
 

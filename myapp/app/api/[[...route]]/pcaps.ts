@@ -14,13 +14,15 @@ const app = new Hono()
     if (!auth?.userId) {
       return c.json({ error: "Unauthorized" }, 401);
       }
-      
     const data = await db
     .select({
-        id : pcap_file.id,
+        id: pcap_file.id,
+        Name: pcap_file.name,
         Uploadthing_url : pcap_file.Uploadthing_url,
+        Created_At: pcap_file.createdAt,
     })
-    .from(pcap_file);
+    .from(pcap_file)
+    
   return c.json({ data });
 })
 .post("/", 
@@ -32,14 +34,11 @@ zValidator("json", insertPcapSchema.pick({
   async (c) => {
     const auth = getAuth(c);
     const values = c.req.valid("json");
-
     if(!auth?.userId){
       return c.json({error: "Unauthorized"}, 401);
     } 
-
     const [data] = await db.insert(pcap_file).values({
       userId: auth.userId,
-   
       ...values,
     }).returning();
 

@@ -25,7 +25,6 @@ export const NewPcapSheet = () => {
     const onSubmit = (values: FormValues) => {
         mutation.mutate(values, {
             onSuccess: () => {
-                
                 onClose();
             },
         });
