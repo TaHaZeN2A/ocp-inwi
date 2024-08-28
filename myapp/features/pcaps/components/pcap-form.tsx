@@ -19,6 +19,7 @@ import { toast } from "sonner";
 const formSchema = insertPcapSchema.pick({
     name: true,
     Uploadthing_url: true,
+    file_size: true,
 });
 
 type FormValues = z.input<typeof formSchema>;
@@ -69,6 +70,7 @@ export const PcapForm = ({
                     <UploadButton endpoint="pcap" 
                         onClientUploadComplete={(res) => {
                             form.setValue("Uploadthing_url", res[0].url);
+                            form.setValue("file_size", res[0].size);
                             toast.success("Pcap uploaded successfully");
                             
                      }}/>

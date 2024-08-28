@@ -6,9 +6,9 @@ import { ArrowUpDown } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox"
 import { InferResponseType } from "hono";
 import {client} from "@/lib/hono";
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
+import { bytesToMB } from "@/lib/utils"; 
 
+import Link from "next/link";
 export type ResponseType = InferResponseType<typeof client.api.pcaps.$get, 200>["data"][0];
 
 export const columns: ColumnDef<ResponseType>[] = [
@@ -52,6 +52,11 @@ export const columns: ColumnDef<ResponseType>[] = [
   {
     accessorKey: "Uploadthing_url",
     header: "Pcap URL",
+  },
+  {
+    accessorKey: "file_size",
+    header: "File Size",
+    cell: ({ row }) => bytesToMB(row.original.file_size ?? 0), 
   },
   {
     accessorKey: "Created_At",

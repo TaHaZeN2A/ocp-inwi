@@ -12,12 +12,14 @@ const handleAuth = () => {
 
 // FileRouter for your app, can contain multiple FileRoutes
 export const ourFileRouter = {
-    pcap: f({"application/vnd.tcpdump.pcap": { maxFileSize: "4MB", maxFileCount: 1}})
+    pcap: f({"application/vnd.tcpdump.pcap": { maxFileSize: "1GB", maxFileCount: 1}})
     .middleware(()=> handleAuth())
     .onUploadComplete(async ({ metadata, file }) => {
       console.log("Upload complete for userId:", metadata.userId);
       console.log("file url", file.url); 
-      return { uploadedBy: metadata.userId, url: file.url };
+      console.log("file url", file.size); 
+
+      return { uploadedBy: metadata.userId, url: file.url, size: file.size };
     }),
 
           

@@ -1,5 +1,4 @@
 import { Header } from "@/components/header";
-import { Footer } from "./footer";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "../api/uploadthing/core";
@@ -20,7 +19,7 @@ const LandingLayout = ({children}:Props) => {
             <main className="flex-1 flex flex-col items-center justify-center">
             {children}
             </main>
-            <Footer/>
+            
         </div>
         </body>
     );

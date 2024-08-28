@@ -14,6 +14,7 @@ import { useCreatePcap } from "../api/use-create-pcap";
 const formSchema = insertPcapSchema.pick({
     name: true,
     Uploadthing_url: true,
+    file_size: true,
 });
 
 type FormValues = z.input<typeof formSchema>;
@@ -40,6 +41,7 @@ export const NewPcapSheet = () => {
          <PcapForm onSubmit={onSubmit}  disabled={mutation.isPending}  defaultValues={{
             name:"",
             Uploadthing_url:"",
+            file_size:0,
          }} /> 
         </SheetContent>
     </Sheet>

@@ -1,0 +1,173 @@
+{
+  "id": "faf8a6bf-925a-4e5b-8fa7-54bb0b551ab0",
+  "prevId": "476ed47d-6723-45c1-8643-4edd0bb1b1d2",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "analysis_result": {
+      "name": "analysis_result",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "fileId": {
+          "name": "fileId",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "analysisData": {
+          "name": "analysisData",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp (0)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'2024-08-28T14:19:00.000Z'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "analysis_result_fileId_pcap_file_id_fk": {
+          "name": "analysis_result_fileId_pcap_file_id_fk",
+          "tableFrom": "analysis_result",
+          "tableTo": "pcap_file",
+          "columnsFrom": [
+            "fileId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "chart_data": {
+      "name": "chart_data",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "labels": {
+          "name": "labels",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "datasets": {
+          "name": "datasets",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "dataset": {
+      "name": "dataset",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "label": {
+          "name": "label",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "data": {
+          "name": "data",
+          "type": "integer[]",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "borderColor": {
+          "name": "borderColor",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "backgroundColor": {
+          "name": "backgroundColor",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "pcap_file": {
+      "name": "pcap_file",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Uploadthing_url": {
+          "name": "Uploadthing_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp (0)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'2024-08-28T14:19:00.000Z'"
+        },
+        "userId": {
+          "name": "userId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

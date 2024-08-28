@@ -14,6 +14,7 @@ import {
 
 import { Button } from "./ui/button";
 import { Input } from "@/components/ui/input";
+import { useConfirm } from "@/hooks/use-confirm";
 
 import {
   Table,
@@ -29,8 +30,8 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   filterKey: string;
-  onDelete: () => void;
-  disabled: boolean;
+  onDelete: (rows:Row<TData>[]) => void;
+  disabled?: boolean;
 }
 
 export function DataTable<TData, TValue>({
@@ -40,19 +41,61 @@ export function DataTable<TData, TValue>({
   onDelete,
   disabled,
 }: DataTableProps<TData, TValue>) {
-  console.log("DataTable data:", data); // Add this line to debug data
-
+  const [ConfirmDialog, confirm] = useConfirm("Are you sure? ", "You are about to delete the items selected");
+  const [sorting, setSorting] = React.useState<SortingState>([])
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    []
+  )
+  const [rowSelection, setRowSelection] = React.useState({})
+  
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    onColumnFiltersChange: setColumnFilters,
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getSortedRowModel: getSortedRowModel(),
+    onRowSelectionChange: setRowSelection,
+
+    state:{
+      sorting,
+      columnFilters,
+      rowSelection,
+    },
   });
 
   return (
     <div>
+      <ConfirmDialog />
+        <div className="flex items-center py-4">
+        <Input
+          placeholder={`Search by ${filterKey}`}
+          value={(table.getColumn(filterKey)?.getFilterValue() as string) ?? ""}
+          onChange={(event) =>
+            table.getColumn(filterKey)?.setFilterValue(event.target.value)
+          }
+          className="max-w-sm"
+        />
+      
+        {table.getFilteredSelectedRowModel().rows.length > 0 && (
+
+          <Button size="sm" variant="danger" className="ml-auto font-normal text-xs" disabled={disabled} 
+          onClick={ async ()=> { const ok = await confirm();
+            if(ok){
+              onDelete(table.getFilteredSelectedRowModel().rows) 
+              table.resetRowSelection();
+            }
+            
+          }}>
+
+              <Trash className="size-4 mr-2"/>
+              Delete ({ table.getFilteredSelectedRowModel().rows.length })
+          </Button>
+         )}
+
+      </div>
+
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map(headerGroup => (

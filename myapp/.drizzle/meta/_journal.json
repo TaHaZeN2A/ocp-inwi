@@ -29,6 +29,27 @@
       "when": 1723251144126,
       "tag": "0003_flawless_vin_gonzales",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1723321056875,
+      "tag": "0004_true_harpoon",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1724854814956,
+      "tag": "0005_faulty_chamber",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1724860542182,
+      "tag": "0006_fat_tyrannus",
+      "breakpoints": true
     }
   ]
 }
